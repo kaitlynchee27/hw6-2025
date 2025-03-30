@@ -4,7 +4,7 @@ var video;
 window.addEventListener("load", function() {
 	console.log("Good job opening the window")
 	video = document.querySelector("#player1");
-	video.autoplay=false;
+	video.autoplay = false;
 	console.log('autoplay is set to' + video.autoplay);
 	video.loop = false;
 	console.log('video looping is set to' + video.loop);
@@ -52,10 +52,16 @@ document.querySelector("#skip").addEventListener("click", function() {
 
 // mute
 document.querySelector("#mute").addEventListener("click", function() {
-	console.log("Mute Video");
-	video.volume=0;
-	console.log("New speed:" + video.playbackRate);
-	document.querySelector("#volume").innerHTML = video.volume + '%';
+	mutebutton=document.querySelector("#mute");
+	if (video.muted) {
+		console.log("Mute Video");
+		video.muted=false;
+		mutebutton.textContent = "Mute";
+	} else{
+		console.log("Unmute Video");
+		video.muted=true;
+		mutebutton.textContent = "Unmute";
+	}
 });
 
 // volume slider
